@@ -1,0 +1,22 @@
+<h1>Рецепти</h1>
+
+<div class="row">
+  <% @recipes.reverse_each do |recipe| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <%= image_tag recipe.image if recipe.image.attached? %>
+          <div class="card-body">
+            <h5 class="card-title"><%= recipe.title %></h5>
+            <p class="card-text"><%= recipe.text %></p>
+            <div style="text-align: center">
+            <%= link_to "Дивитися повністю",  recipe_path(recipe), class: "btn btn-warning" %>
+            <% if logged_in? %>
+                <%= button_to  "Не подобається", recipe_like_path(recipe, current_user), method: :delete, class: "btn btn-warning"%>
+                <%= button_to  "Подобається", recipe_likes_path(recipe), method: :post, class: "btn btn-warning" %>
+            <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

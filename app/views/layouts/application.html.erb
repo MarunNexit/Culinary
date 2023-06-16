@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Culinary</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+  <!-- Add your Bootstrap menu here -->
+
+  <nav class="navbar navbar-expand-lg sticky-top navbar navbar-dark bg-dark menu >
+    <div class="container menu">
+       <img src="/assets/logo.png" alt="Image 2" style="width: 50px">
+       <%= link_to 'KURISU MEAL', root_path, class: 'navbar-brand brand' %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarNav">
+        <ul class="navbar-nav ">
+          <li class="nav-item ">
+            <%= link_to 'Рецепти', recipes_path, class: 'nav-link menu' %>
+          </li>
+            <%= link_to 'Про нас', about_path, class: 'nav-link menu' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Контакти', contact_path, class: 'nav-link menu' %>
+          </li>
+
+          <% if logged_in? %>
+              <div class="dropdown nav-item">
+                <div class="dropdown">
+                  <%= link_to 'Профіль', user_path(current_user), class: 'btn btn-secondary dropdown-toggle menu marginl' %>
+                  <div class="dropdown-options dropdown-menu">
+                    <%= button_to 'Вийти', logout_path, method: :delete, class: 'dropdown-item menu' %>
+                    <%= link_to 'Додати рецепт', new_recipe_path, class: 'dropdown-item menu' %>
+                  </div>
+                </div>
+              </div>
+          <% else %>
+              <div class="dropdown nav-item">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle menu marginl">Профіль</button>
+                  <div class="dropdown-options dropdown-menu">
+                    <%= link_to 'Зареєструватися', signup_path, class: 'dropdown-item menu' %>
+                    <%= link_to 'Увійти', login_path, class: 'dropdown-item menu' %>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+
+          <div>
+
+          </div>
+          <!-- Add more menu items as needed -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+
+  <footer style="margin-top: 50px" class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-a692"><div class="u-clearfix u-sheet u-sheet-1">
+    <p class="u-small-text u-text u-text-variant u-text-1">KURISU MEAL</p>
+  </div></footer>
+  <section class="u-backlink u-clearfix u-grey-80">
+    <span>Вебсайт створений для ваших кулінарних смаків</span>
+  </section>
+
+  <!-- Include Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+
+.menu {
+    font-size: 25px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.brand {
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.marginl {
+    margin-left: 5px;
+}
+
+.margint {
+    margin-top: 12px;
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-options {
+    display: none;
+    position: absolute;
+    overflow: auto;
+    background-color: white;
+}
+
+.dropdown:hover .dropdown-options {
+    display: block;
+}
+
+
+.fullscreen-section {
+    position: absolute;
+    height: 250px;
+    width: 100vw;
+    margin-top: 50px;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.fullscreen-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/food1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    z-index: -1;
+    animation: scrollBackground 20s linear infinite;
+
+}
+
